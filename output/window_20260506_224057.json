@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-05-06T22:40:57.948044",
+  "window_seconds": 10,
+  "aggregations": {
+    "BTCUSDT": {
+      "avg_price": 81301.38294117646,
+      "min_price": 81301.38,
+      "max_price": 81301.39,
+      "event_count": 17
+    }
+  }
+}
