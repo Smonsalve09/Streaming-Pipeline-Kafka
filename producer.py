@@ -4,7 +4,8 @@ from websocket import WebSocketApp
 
 producer = KafkaProducer(
     bootstrap_servers='localhost:9092',
-    value_serializer=lambda v: json.dumps(v).encode('utf-8')
+    value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+    key_serializer=lambda k: k.encode('utf-8') if k else None
 )
 
 def on_message(ws, message):
@@ -17,29 +18,30 @@ def on_message(ws, message):
         "timestamp": data["T"]
     }
 
-    producer.send("crypto-prices", value=event)
+    producer.send(
+        "crypto-transaction",
+        key=event["symbol"],
+        value=event
+    )
+
     print(event)
+
+def on_open(ws):
+    print("Connected to Binance WebSocket")
+
+def on_error(ws, error):
+    print("Error:", error)
+
+def on_close(ws, close_status_code, close_msg):
+    print("Connection closed")
 
 ws = WebSocketApp(
     "wss://stream.binance.com:9443/ws/btcusdt@trade",
-    on_message=on_message
+    on_open=on_open,
+    on_message=on_message,
+    on_error=on_error,
+    on_close=on_close
 )
 
-
-def produce_events(events_per_second: int = 10):
-    print("Starting producer...")
-    while True:
-        event = ws()
-        
-        # Usar device_id como key para ordering
-        producer.send(
-            'crypto-transaction',
-            key=event['symbol'],
-            value=event
-        )
-        
-        print(f"Sent: {event['symbol']}")
-        time.sleep(1 / events_per_second)
-
 if __name__ == "__main__":
-    produce_events()
+    ws.run_forever()
