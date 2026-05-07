@@ -1,176 +1,125 @@
-\# Real-Time Cryptocurrency Streaming Pipeline with Kafka
+# Real-Time Cryptocurrency Streaming Pipeline with Kafka
 
+This project implements a real-time streaming data pipeline using Kafka, Docker, and Python.
 
+Cryptocurrency trade events are ingested from the Binance WebSocket API, streamed through Kafka topics, processed with windowed aggregations, and persisted as JSON outputs.
 
-This project implements a real-time streaming data pipeline using Kafka, Docker, and Python. 
+---
 
-Cryptocurrency trade events are ingested from the Binance WebSocket API, streamed through Kafka 
-
-topics, processed with windowed aggregations, and persisted as JSON outputs.
-
-
-
-\## Architecture
+## Architecture
 
 ```mermaid
-
 graph TD
-
-&#x20;   A\[Binance WebSocket API] --> B\[Kafka Producer]
-
-&#x20;   B --> C\[Kafka Topic: crypto-transaction]
-
-&#x20;   C --> D\[Kafka Consumer]
-
-&#x20;   D --> E\[Window Aggregations]
-
-&#x20;   E --> F\[JSON Output Files]
-
+    A[Binance WebSocket API] --> B[Kafka Producer]
+    B --> C[Kafka Topic: crypto-transaction]
+    C --> D[Kafka Consumer]
+    D --> E[Window Aggregations]
+    E --> F[JSON Output Files]
 ```
 
-\## Tech Stack
+---
 
+## Tech Stack
 
+* Python
+* Apache Kafka
+* Docker & Docker Compose
+* Binance WebSocket API
+* kafka-python
+* Real-time streaming
+* Windowed event processing
 
-\- Python
+---
 
-\- Apache Kafka
+## Features
 
-\- Docker \& Docker Compose
+* Real-time cryptocurrency trade ingestion
+* Kafka-based event streaming
+* Dockerized distributed architecture
+* Windowed aggregations
+* JSON persistence layer
+* Graceful shutdown handling
+* Consumer group processing
+* Fault-tolerant container restart
 
-\- Binance WebSocket API
+---
 
-\- kafka-python
+## Project Structure
 
-\- Real-time streaming
-
-\- Windowed event processing
-
-
-
-\## Features
-
-
-
-\- Real-time cryptocurrency trade ingestion
-
-\- Kafka-based event streaming
-
-\- Dockerized distributed architecture
-
-\- Windowed aggregations
-
-\- JSON persistence layer
-
-\- Graceful shutdown handling
-
-\- Consumer group processing
-
-\- Fault-tolerant container restart
-
-
-
-\## Project Structure
-
+```text
 .
-
-├── producer.py
-
-├── consumer\_windowed.py
-
-├── docker-compose.yml
-
-├── Dockerfile
-
-├── requirements.txt
-
+├── producer/
+│   └── producer.py
+├── consumer/
+│   └── consumer_windowed.py
 ├── output/
-
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
 └── README.md
-
-
-
-\## How to run
-
-
-
-```bash
-
-git clone <repo-url>
-
-cd kafka-pipeline
-
 ```
 
-```bash
+---
 
+## How to Run
+
+### Clone repository
+
+```bash
+git clone https://github.com/Smonsalve09/Streaming-Pipeline-Kafka.git
+cd Streaming-Pipeline-Kafka
+```
+
+### Start services
+
+```bash
 docker compose up --build
-
 ```
 
-\## Open Kafka UI
+---
 
+## Open Kafka UI
 
+Kafka UI is available at:
 
-Kafka UI:
-
+```text
 http://localhost:8080
+```
 
+---
 
-
-\## Example output
+## Example Output
 
 ```json
-
 {
-
-&#x20; "timestamp": "2026-05-06T22:48:10",
-
-&#x20; "window\_seconds": 10,
-
-&#x20; "aggregations": {
-
-&#x20;   "BTCUSDT": {
-
-&#x20;     "avg\_price": 81302.14,
-
-&#x20;     "min\_price": 81295.10,
-
-&#x20;     "max\_price": 81310.50,
-
-&#x20;     "event\_count": 245
-
-&#x20;   }
-
-&#x20; }
-
+  "timestamp": "2026-05-06T22:48:10",
+  "window_seconds": 10,
+  "aggregations": {
+    "BTCUSDT": {
+      "avg_price": 81302.14,
+      "min_price": 81295.10,
+      "max_price": 81310.50,
+      "event_count": 245
+    }
+  }
 }
-
 ```
 
-\## Future Improvements
+---
 
+## Future Improvements
 
+* Spark Structured Streaming integration
+* Delta Lake storage
+* Medallion Architecture
+* Real-time dashboards
+* Schema Registry
+* Dead-letter queue implementation
+* Exactly-once semantics
+* Kubernetes deployment
 
-\- Spark Structured Streaming integration
+---
 
-\- Delta Lake storage
+## Screenshots
 
-\- Medallion Architecture
-
-\- Real-time dashboards
-
-\- Schema Registry
-
-\- Dead-letter queue implementation
-
-\- Exactly-once semantics
-
-\- Kubernetes deployment
-
-
-
-
-
-&#x20; !\[Kafka UI](images/kafka-ui.png)
-
+![Kafka UI](images/kafka-ui.png)
