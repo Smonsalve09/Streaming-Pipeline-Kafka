@@ -1,0 +1,30 @@
+# Entornos virtuales
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+
+# Outputs
+output/
+
+# Variables de entorno
+.env
+
+# Datos (no subir datasets)
+data/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
