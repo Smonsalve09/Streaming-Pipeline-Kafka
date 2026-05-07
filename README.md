@@ -48,10 +48,8 @@ graph TD
 
 ```text
 .
-├── producer/
-│   └── producer.py
-├── consumer/
-│   └── consumer_windowed.py
+├── producer.py
+├── consumer.py
 ├── output/
 ├── docker-compose.yml
 ├── Dockerfile
