@@ -120,4 +120,10 @@ http://localhost:8080
 
 ## Screenshots
 
-![Kafka UI](images/kafka-ui.png)
+<img width="1735" height="918" alt="image" src="https://github.com/user-attachments/assets/21a94272-60b4-4ac8-a380-11f03814fc58" />
+
+
+<img width="1589" height="705" alt="image" src="https://github.com/user-attachments/assets/c0037c60-6e3a-48d1-b9a7-f741cdccfcfa" />
+
+<img width="1595" height="650" alt="image" src="https://github.com/user-attachments/assets/06e2cfb4-0b0a-48ec-9366-f1cf328aa7e8" />
+
