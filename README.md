@@ -127,3 +127,8 @@ http://localhost:8080
 
 <img width="1595" height="650" alt="image" src="https://github.com/user-attachments/assets/06e2cfb4-0b0a-48ec-9366-f1cf328aa7e8" />
 
+# Author
+
+Sebastián Monsalve Gómez
+
+Data Engineering | Real-Time Streaming | Apache Kafka | Big Data
